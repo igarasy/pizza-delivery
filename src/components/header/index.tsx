@@ -7,7 +7,6 @@ const Header = () => {
       <S.Wrapper>
         <S.HeaderCard>Pizarria Lucas</S.HeaderCard>
       </S.Wrapper>
-      <S.Button>Peça uma pizza</S.Button>
     </>
   );
 };

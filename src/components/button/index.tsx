@@ -1,12 +1,13 @@
 import React from 'react';
+import * as S from './styled'
 
-export interface ButtonProps {
-  onClick: () => void;
-  buttonName: string;
+export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+  onClick?: () => void;
+  children?: React.ReactNode
 }
 
 const Button = (props: ButtonProps) => {
-  return <button onClick={props.onClick}>{props.buttonName}</button>;
+  return <S.Button onClick={props.onClick}>{props.children}</S.Button>;
 };
 
 export default Button;

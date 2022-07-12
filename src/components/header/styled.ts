@@ -5,7 +5,7 @@ export const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 3px red;
+ 
 `;
 
 export const HeaderCard = styled.div`
@@ -21,10 +21,4 @@ export const HeaderCard = styled.div`
   border-bottom-right-radius: 10px;
 `;
 
-export const Button = styled.button`
-  margin: 100px 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: solid 3px red;
-`;
+

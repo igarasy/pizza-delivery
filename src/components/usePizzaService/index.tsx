@@ -1,22 +1,22 @@
 import { AxiosError } from 'axios';
 import * as React from 'react';
-import { SearchService } from '../../services/sizePizza';
+import { SearchService } from '../../services/sizePizza/index';
 import { DtoPizza } from '../../services/sizePizza/dtoPizza';
+import { DtoStepsResponse } from '../../services/sizePizza/dtoStepsResponse';
 
-export function useSearchService() {
+export function usePizzaService() {
   const [loading, setLoading] = React.useState(false);
-  const [data, setData] = React.useState<DtoPizza[]>();
+  const [data, setData] = React.useState<DtoStepsResponse<DtoPizza>[]>();
   const [error, setErrors] = React.useState<AxiosError>();
-
+ 
   // ---------------------------------------------
   // Functions
 
   const search = React.useCallback(async () => {
     try {
-      setErrors(undefined);
       setLoading(true);
       const response = await SearchService.searchPizza();
-      setData(response.options);
+      setData(response);
     } catch (error) {
       setErrors(error as AxiosError);
     } finally {
@@ -24,10 +24,12 @@ export function useSearchService() {
     }
   }, []);
 
+  React.useEffect(() => {
+    search();
+  }, [search]);
+
   return {
     loading,
     data,
-    error,
-    search,
   };
 }

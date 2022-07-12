@@ -7,4 +7,12 @@ export const Wrapper = styled.header`
   justify-content: center;
   border: solid 3px red;
 `;
-export {}
+export const Button = styled.button`
+  margin: 100px 80px;
+  width: 100px;
+  cursor: pointer;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

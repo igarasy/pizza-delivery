@@ -1,11 +1,15 @@
 import * as React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import ControlledRadioButtonsGroup from '../../radio'
+import Radio from '@mui/material/Radio'
+import { FormControlLabel, RadioGroup } from '@mui/material'
 
 interface basicCardprops {
-  text: string,
+  text: string
   label: string
+  id: string
+  checked: boolean
+  onClick: (id: string) => void
 }
 
 export default function BasicCard(props: basicCardprops) {
@@ -20,8 +24,16 @@ export default function BasicCard(props: basicCardprops) {
         margin: '10px',
       }}
     >
-      <CardContent sx={{display: 'flex', alignItems: 'center'}}>
-        <ControlledRadioButtonsGroup label={props.label}/>
+      <CardContent sx={{ display: 'flex', alignItems: 'center' }}>
+        <RadioGroup>
+          <FormControlLabel
+            value="female"
+            control={<Radio />}
+            label={props.text}
+            checked={props.checked}
+            onClick={() => props.onClick}
+          />
+        </RadioGroup>
       </CardContent>
     </Card>
   )

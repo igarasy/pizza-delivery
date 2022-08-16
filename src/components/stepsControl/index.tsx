@@ -18,7 +18,7 @@ interface Props {
 export default function HorizontalLabelPositionBelowStepper({step}: Props) {
  
   return (
-    <Box sx={{ width: '100%', marginTop: '5%' }}>
+    <Box sx={{ width: '100%', marginTop: '5%'}}>
       <Stepper activeStep={step} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>

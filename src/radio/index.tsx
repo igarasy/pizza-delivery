@@ -1,13 +1,13 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Radio, { RadioProps } from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import * as React from 'react'
+import { styled } from '@mui/material/styles'
+import Radio, { RadioProps } from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
 
 interface Props {
   label: string
+  id: string
 }
 
 const BpIcon = styled('span')(({ theme }) => ({
@@ -33,13 +33,16 @@ const BpIcon = styled('span')(({ theme }) => ({
   'input:disabled ~ &': {
     boxShadow: 'none',
     background:
-      theme.palette.mode === 'dark' ? 'rgba(57,75,89,.5)' : 'rgba(206,217,224,.5)',
+      theme.palette.mode === 'dark'
+        ? 'rgba(57,75,89,.5)'
+        : 'rgba(206,217,224,.5)',
   },
-}));
+}))
 
 const BpCheckedIcon = styled(BpIcon)({
   backgroundColor: '#137cbd',
-  backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
+  backgroundImage:
+    'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
   '&:before': {
     display: 'block',
     width: 16,
@@ -50,7 +53,7 @@ const BpCheckedIcon = styled(BpIcon)({
   'input:hover ~ &': {
     backgroundColor: '#106ba3',
   },
-});
+})
 
 // Inspired by blueprintjs
 function BpRadio(props: RadioProps) {
@@ -67,18 +70,35 @@ function BpRadio(props: RadioProps) {
       icon={<BpIcon />}
       {...props}
     />
-  );
+  )
 }
 
 export default function CustomizedRadios(props: Props) {
+  const [selectedValue, setSelectedValue] = React.useState<String>('')
+
+  function onChangeValue(event: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedValue((event.target as HTMLInputElement).value)
+    console.log(event.target.value)
+  }
+  
+// colocar o onchange no centralCard
   return (
     <FormControl>
       <RadioGroup
         aria-labelledby="demo-customized-radios"
-        name={props.label}
+        value={selectedValue}
+        onChange={(e) =>
+          onChangeValue(e as React.ChangeEvent<HTMLInputElement>)
+        }
       >
-        <FormControlLabel value={props.label} control={<BpRadio />} label={props.label}/>
+        <FormControlLabel
+          control={<BpRadio />}
+          label={props.label}
+          value={props.id}
+          id={props.id}
+          checked={selectedValue === props.id}          
+        />
       </RadioGroup>
     </FormControl>
-  );
+  )
 }

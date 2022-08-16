@@ -8,14 +8,6 @@ export const Wrapper = styled.div`
   width: 1330px;
 `;
 
-export const Title = styled.h1`
-  
-`;
-
-export const Paragraph = styled.p`
-
-`;
-
 export const CardWrapper = styled.div`
   margin: 0 auto;
   max-width: 800px;
@@ -31,14 +23,19 @@ export const CardWrapper = styled.div`
 
 export const StepsWrapper = styled.div`
   display: flex;
-  
   margin-left: 70px;
 `
 
 export const StepsButtons = styled.button`
  border-radius: 5px;
  border: none;
+ cursor: pointer;
  padding: 10px;
+ 
+ &:hover{
+  background-color: grey;
+  
+ }
 `
 export const StepsContainer = styled.div`
 width: 1330px ;

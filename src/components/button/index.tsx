@@ -1,13 +1,29 @@
-import React from 'react';
-import * as S from './styled'
+import React from 'react'
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router'
 
 export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
-  onClick?: () => void;
+  onClick?: () => void
   children?: React.ReactNode
 }
 
-const Button = (props: ButtonProps) => {
-  return <S.Button onClick={props.onClick}>{props.children}</S.Button>;
-};
+const ButtonOrder = (props: ButtonProps) => {
+  const navigate = useNavigate()
+  return (
+    <Button
+      variant="outlined"
+      onClick={()=> navigate('second-step')}
+      style={{
+        margin: '100px 650px',
+        width: '200px',
+        cursor: 'pointer',
+        height: '100px',
+       
+      }}
+    >
+    Peça uma pizza
+    </Button>
+  )
+}
 
-export default Button;
+export default ButtonOrder
